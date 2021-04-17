@@ -1,0 +1,15 @@
+<form class="form-task" [formGroup]="taskForm">
+  <mat-form-field class="full-width">
+    <mat-label>Titulo da tarefa</mat-label>
+    <input
+      #inputTitle
+      formControlName="title"
+      matInput
+      placeholder="Ex. Limpar a casa"
+      (keyup.enter)="handleAddClick()"
+    />
+  </mat-form-field>
+  <button mat-fab color="accent" type="button" (click)="handleAddClick()">
+    <mat-icon>add</mat-icon>
+  </button>
+</form>

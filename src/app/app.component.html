@@ -1,37 +1,51 @@
 <div class="app">
   <h2>Cadastro de Tarefas</h2>
-
-  <form class="form-task">
-    <mat-form-field class="full-width">
-      <mat-label>Titulo da tarefa</mat-label>
-      <input matInput placeholder="Ex. Limpar a casa" value="" />
-    </mat-form-field>
-    <button
-      mat-fab
-      color="accent"
-      type="button"
-      aria-label="Example icon button with a bookmark icon"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-  </form>
+  <app-task-form [onAddTask]="addTask"></app-task-form>
 </div>
 
-<mat-list>
-  <mat-list-item *ngFor="let task of tasks; let i = index">
-    <button mat-icon-button color="warn">
-      <mat-icon>delete</mat-icon>
-    </button>
-    <div mat-line>
-      <label>
-        <mat-checkbox [checked]="task.completed"></mat-checkbox>
-        {{ task.title }}
-      </label>
-    </div>
-  </mat-list-item>
-</mat-list>
-
 <mat-grid-list cols="2">
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>
+    <div>
+      <h3 *ngIf="tasks.length > 0">Tarefas Pendentes</h3>
+      <mat-list>
+        <mat-list-item
+          *ngFor="let task of getUnCompletedTasks(); let i = index"
+        >
+          <button mat-icon-button color="warn" (click)="removeTask(task.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div mat-line>
+            <label>
+              <mat-checkbox
+                [checked]="task.completed"
+                (change)="completeTask(task.id)"
+              ></mat-checkbox>
+              {{ task.title }}
+            </label>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div>
+      <h3 *ngIf="tasks.length > 0">Tarefas Completas</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let task of getCompletedTasks(); let i = index">
+          <button mat-icon-button color="warn" (click)="removeTask(task.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div mat-line>
+            <label>
+              <mat-checkbox
+                [checked]="task.completed"
+                (change)="unCompleteTask(task.id)"
+              ></mat-checkbox>
+              {{ task.title }}
+            </label>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-grid-tile>
 </mat-grid-list>
