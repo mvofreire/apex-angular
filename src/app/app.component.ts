@@ -18,34 +18,34 @@ export class AppComponent {
     });
   };
 
-  completeTask(id: number) {
+  completeTask = (id: number) => {
     const index = this.getTaskIndexById(id);
     this.tasks[index].completed = true;
   }
 
-  unCompleteTask(id: number) {
+  unCompleteTask = (id: number) => {
     const index = this.getTaskIndexById(id);
     this.tasks[index].completed = false;
   }
 
-  removeTask(id: number) {
+  removeTask = (id: number) => {
     const index = this.getTaskIndexById(id);
     this.tasks.splice(index, 1);
   }
 
-  getTaskIndexById(id: number) {
+  getTaskIndexById = (id: number) => {
     return this.tasks.findIndex((task) => task.id === id);
-  }
+  };
 
-  getUnCompletedTasks() {
+  getUnCompletedTasks = () => {
     return this.tasks.filter((task) => !task.completed);
-  }
+  };
 
-  getCompletedTasks() {
+  getCompletedTasks = () => {
     return this.tasks.filter((task) => task.completed);
-  }
+  };
 
-  toggleSidebar = ()=>{
+  toggleSidebar = () => {
     this.sidebarOpen = !this.sidebarOpen;
-  }
+  };
 }
