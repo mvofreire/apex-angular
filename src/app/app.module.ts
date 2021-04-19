@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { ListComponent } from './components/list/list.component';
 
 const MaterialModules = [
   MatInputModule,
@@ -23,7 +24,7 @@ const MaterialModules = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, TaskFormComponent],
+  declarations: [AppComponent, TaskFormComponent, ListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

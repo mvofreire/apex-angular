@@ -1,0 +1,18 @@
+<h3>Titulo</h3>
+<mat-list>
+  <mat-list-item *ngFor="let task of tasks">
+    <button mat-icon-button color="warn" (click)="onRemoveTask(task.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <div mat-line>
+      <label>
+        <mat-checkbox
+          [checked]="task.completed"
+          (change)="onCompleteTask(task.id)"
+        >
+        </mat-checkbox>
+        {{ task.title }}
+      </label>
+    </div>
+  </mat-list-item>
+</mat-list>

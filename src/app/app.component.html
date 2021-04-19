@@ -3,49 +3,26 @@
   <app-task-form [onAddTask]="addTask"></app-task-form>
 </div>
 
-<mat-grid-list cols="2">
-  <mat-grid-tile>
-    <div>
-      <h3 *ngIf="tasks.length > 0">Tarefas Pendentes</h3>
-      <mat-list>
-        <mat-list-item
-          *ngFor="let task of getUnCompletedTasks(); let i = index"
-        >
-          <button mat-icon-button color="warn" (click)="removeTask(task.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <div mat-line>
-            <label>
-              <mat-checkbox
-                [checked]="task.completed"
-                (change)="completeTask(task.id)"
-              ></mat-checkbox>
-              {{ task.title }}
-            </label>
-          </div>
-        </mat-list-item>
-      </mat-list>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <div>
-      <h3 *ngIf="tasks.length > 0">Tarefas Completas</h3>
-      <mat-list>
-        <mat-list-item *ngFor="let task of getCompletedTasks(); let i = index">
-          <button mat-icon-button color="warn" (click)="removeTask(task.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <div mat-line>
-            <label>
-              <mat-checkbox
-                [checked]="task.completed"
-                (change)="unCompleteTask(task.id)"
-              ></mat-checkbox>
-              {{ task.title }}
-            </label>
-          </div>
-        </mat-list-item>
-      </mat-list>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="actions">
+  <button mat-raised-button color="warn" type="button">
+    <mat-icon>delete</mat-icon>
+    Remover Todos
+  </button>
+  &nbsp;
+  <button mat-raised-button type="button" (click)="toggleSidebar()">
+    <mat-icon>menu_open</mat-icon>
+    Tarefas Concluídas
+  </button>
+</div>
+
+<div class="app-body">
+  <div class="app-content">
+    <app-list
+      [tasks]="getUnCompletedTasks()"
+      [onRemoveTask]="removeTask"
+      [onCompleteTask]="completeTask"
+    >
+    </app-list>
+  </div>
+  <div class="app-sidebar" [ngClass]="{ open: sidebarOpen }"></div>
+</div>
