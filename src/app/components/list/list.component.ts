@@ -7,6 +7,7 @@ import { ITask } from 'src/app/interfaces/ITask';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
+  @Input() componentTitle: string = '';
   @Input() tasks: ITask[] = [];
   @Input() onRemoveTask!: (id: number) => void;
   @Input() onCompleteTask!: (id: number) => void;

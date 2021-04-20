@@ -1,4 +1,7 @@
-<h3>Titulo</h3>
+<h3>{{componentTitle}}</h3>
+
+<span *ngIf="tasks.length === 0"> Você não possui nenhuma tarefa ainda</span>
+
 <mat-list>
   <mat-list-item *ngFor="let task of tasks">
     <button mat-icon-button color="warn" (click)="onRemoveTask(task.id)">
