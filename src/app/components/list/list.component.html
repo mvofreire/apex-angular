@@ -7,6 +7,9 @@
     <button mat-icon-button color="warn" (click)="onRemoveTask(task.id)">
       <mat-icon>delete</mat-icon>
     </button>
+    <button mat-icon-button color="accent" routerLink="detail/{{task.id}}">
+      <mat-icon>preview</mat-icon>
+    </button>
     <div mat-line>
       <label>
         <mat-checkbox

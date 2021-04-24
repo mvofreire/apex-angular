@@ -1,0 +1,42 @@
+.app {
+  background-color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.app-body {
+  display: flex;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.app-content {
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.app-sidebar {
+  overflow-y: auto;
+  position: relative;
+  width: 0%;
+  padding: 0px;
+  visibility: hidden;
+  opacity: 0;
+  background-color: #f1f1f1;
+  transition: all 300ms linear;
+  border-left: solid 1px #e8e5e5;
+}
+
+.app-sidebar.open{
+  width: 100%;
+  padding: 20px;
+  opacity: 1;
+  visibility: visible;
+}

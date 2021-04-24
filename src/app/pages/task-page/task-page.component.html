@@ -1,0 +1,38 @@
+<div class="app">
+  <h2>Cadastro de Tarefas</h2>
+  <app-task-form [onAddTask]="addTask"></app-task-form>
+</div>
+
+<div class="actions">
+  <button mat-raised-button color="warn" type="button" (click)="removeAll()">
+    <mat-icon>delete</mat-icon>
+    Remover Todos
+  </button>
+  &nbsp;
+  <button mat-raised-button type="button" (click)="toggleSidebar()">
+    <mat-icon *ngIf="!sidebarOpen">menu_open</mat-icon>
+    <mat-icon *ngIf="sidebarOpen">close</mat-icon>
+    Tarefas Concluídas
+  </button>
+</div>
+
+<div class="app-body">
+  <div class="app-content">
+    <app-list
+      componentTitle="Tarefas Pendentes"
+      [tasks]="getUnCompletedTasks()"
+      [onRemoveTask]="removeTask"
+      [onCompleteTask]="completeTask"
+    >
+    </app-list>
+  </div>
+  <div class="app-sidebar" [ngClass]="{ open: sidebarOpen }">
+    <app-list
+      componentTitle="Tarefas Concluídas"
+      [tasks]="getCompletedTasks()"
+      [onRemoveTask]="removeTask"
+      [onCompleteTask]="unCompleteTask"
+    >
+    </app-list>
+  </div>
+</div>

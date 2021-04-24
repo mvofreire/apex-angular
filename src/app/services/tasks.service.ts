@@ -14,6 +14,10 @@ export class TasksService {
     return this.http.get<ITask[]>(this.API);
   }
 
+  show(id: number) {
+    return this.http.get<ITask>(`${this.API}/${id}`);
+  }
+
   create(title: string) {
     return this.http.post(this.API, { title });
   }
@@ -26,7 +30,7 @@ export class TasksService {
     return this.http.patch(`${this.API}/${id}`, { complete });
   }
 
-  removeAll(){
-    return this.http.delete(`${this.API}-all`)
+  removeAll() {
+    return this.http.delete(`${this.API}-all`);
   }
 }

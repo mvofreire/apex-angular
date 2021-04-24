@@ -1,0 +1,31 @@
+<div class="app-detail">
+  <button mat-raised-button color="primary" (click)="goToTaskPage()">
+    Voltar
+  </button>
+
+  <mat-card *ngIf="!!task">
+    <mat-card-title>#{{ task.id }}</mat-card-title>
+    <mat-card-content>{{ task.title }}</mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" (click)="removerTask()">
+        Remover Tarefa
+      </button>
+      <button
+        *ngIf="!task.completed"
+        mat-raised-button
+        color="default"
+        (click)="completeTask()"
+      >
+        Completar Tarefa
+      </button>
+      <button
+        *ngIf="task.completed"
+        mat-raised-button
+        color="default"
+        (click)="unCompleteTask()"
+      >
+        Restaurar Tarefa
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -16,6 +16,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { ListComponent } from './components/list/list.component';
+import { TaskPageComponent } from './pages/task-page/task-page.component';
+import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
+import { MatCardModule } from '@angular/material/card';
+
 const MaterialModules = [
   MatInputModule,
   MatButtonModule,
@@ -24,10 +28,11 @@ const MaterialModules = [
   MatCheckboxModule,
   MatGridListModule,
   MatSnackBarModule,
+  MatCardModule
 ];
 
 @NgModule({
-  declarations: [AppComponent, TaskFormComponent, ListComponent],
+  declarations: [AppComponent, TaskFormComponent, ListComponent, TaskPageComponent, TaskDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
